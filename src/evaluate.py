@@ -369,7 +369,7 @@ def run_evaluation_pipeline() -> tuple[pd.DataFrame, pd.DataFrame, Path]:
     # 1. Fit models on training partition only
     fitted_models = train_models(X_train, y_train)
 
-    # 2. Evaluate on Validation set (Model Selection)
+    # 2. Evaluate on Validation set (Model Selection strictly on validation data)
     val_preds = generate_predictions(fitted_models, X_val)
     val_comparison = compare_models(y_val, val_preds)
 
@@ -378,10 +378,35 @@ def run_evaluation_pipeline() -> tuple[pd.DataFrame, pd.DataFrame, Path]:
 
     # 3. Evaluate on Out-of-Sample Test set
     test_preds = generate_predictions(fitted_models, X_test)
+
+    # 4. Standard Operational Practice: Retrain the selected champion architecture
+    # on Train + Validation before out-of-sample deployment
+    train_val_df = pd.concat([train_df, val_df])
+    X_train_val = train_val_df[feature_cols]
+    y_train_val = train_val_df[target_col]
+
+    all_fresh_models = get_default_models(random_state=42)
+    if best_val_model_name in all_fresh_models:
+        champion_estimator = all_fresh_models[best_val_model_name]
+        logger.info(
+            "Retraining champion model '%s' on combined Train+Validation partition (%d observations)...",
+            best_val_model_name,
+            len(train_val_df),
+        )
+        champion_estimator.fit(X_train_val, y_train_val)
+        updated_model_name = f"{best_val_model_name} (Updated)"
+        test_preds[updated_model_name] = champion_estimator.predict(X_test)
+        logger.info("Added '%s' to out-of-sample test evaluation.", updated_model_name)
+
     test_comparison = compare_models(y_test, test_preds)
 
-    # 4. Generate forecast plot on test partition
-    plot_models = [best_val_model_name, "Seasonal Naive (t-7)", "Persistence Naive (t-1)"]
+    # 5. Generate forecast plot on test partition
+    updated_name = f"{best_val_model_name} (Updated)"
+    plot_models = [
+        updated_name if updated_name in test_preds else best_val_model_name,
+        best_val_model_name,
+        "Seasonal Naive (t-7)",
+    ]
     plot_path = plot_forecast_vs_actual(
         y_test,
         test_preds,
@@ -389,7 +414,7 @@ def run_evaluation_pipeline() -> tuple[pd.DataFrame, pd.DataFrame, Path]:
         highlight_models=plot_models,
     )
 
-    # 5. Export summary reports
+    # 6. Export summary reports
     export_evaluation_report(val_comparison, test_comparison)
 
     return val_comparison, test_comparison, plot_path

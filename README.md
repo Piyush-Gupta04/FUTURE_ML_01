@@ -205,7 +205,7 @@ Actual metrics computed on the leak-free chronological partitions:
 
 | Model | Setup | MAE (GBP) | RMSE (GBP) | WAPE (%) | Zero-Masked MAPE (%) | $R^2$ Score |
 |---|---|:---:|:---:|:---:|:---:|:---:|
-| **Random Forest (Updated)** | Retrained on Train+Val | **£10,987.70** | **£15,915.69** | **24.36%** | **29.74%** | **0.5611** |
+| **Random Forest (Updated)** | Retrained on Train+Val | **£10,987.70** | **£15,915.69** | **24.36%** | **26.77%** | **0.5611** |
 | Seasonal Naive ($t-7$) | Baseline Heuristic | £11,685.71 | £16,667.57 | 25.90% | 27.96% | 0.5186 |
 | Random Forest (Fixed) | Trained on Train only | £19,128.20 | £24,400.24 | 42.40% | 39.60% | -0.0316 |
 | Moving Average (7d) | Baseline Heuristic | £19,007.16 | £24,182.50 | 42.13% | 33.01% | -0.0133 |
@@ -222,15 +222,15 @@ Actual metrics computed on the leak-free chronological partitions:
 Unit tests use isolated synthetic DataFrames and mocked network calls. No real dataset download or internet connection is required:
 
 ```bash
-# Run all 38 unit tests across ingestion, cleaning, features, and modeling
+# Run all 39 unit tests across ingestion, cleaning, features, and modeling
 pytest tests/ -v
 ```
 
-All **38 tests pass with 100% success rate** covering:
+All **39 tests pass with 100% success rate** covering:
 - Ingestion, schema validation, and URL connectivity (14 tests).
 - Transaction deduplication, write-off filters, and aggregation math (7 tests).
 - Time-series lags, shifted rolling statistics leakage checks, calendar/cyclical bounds, holiday proximity, and chronological partition ordering (8 tests).
-- Model fit/predict shapes, baseline consistency, reproducibility with fixed random seeds, and metric calculations (9 tests).
+- Model fit/predict shapes, baseline consistency, reproducibility with fixed random seeds, retraining workflow, and metric calculations (10 tests).
 
 ---
 

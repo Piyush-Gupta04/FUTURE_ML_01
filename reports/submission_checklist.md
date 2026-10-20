@@ -1,4 +1,4 @@
-﻿# Internship Project Submission & Deliverables Checklist
+# Internship Project Submission & Deliverables Checklist
 
 **Project:** Retail Sales & Demand Forecasting (`FUTURE_ML_01`)
 **Status:** All 5 Phases Completed & Verified
@@ -37,7 +37,7 @@ Use this checklist to verify final project completion, prepare your GitHub repos
   - Interactive notebook created: `notebooks/03_model_training.ipynb`.
 - [x] **Phase 5: Business Insights & Packaging**
   - Final executive project report created: `reports/final_project_report.md`.
-  - Full test suite passing (38 unit tests, 100% pass rate).
+  - Full test suite passing (39 unit tests, 100% pass rate).
   - Repository documentation and reproduction workflow finalized in `README.md`.
 
 ---
@@ -46,14 +46,14 @@ Use this checklist to verify final project completion, prepare your GitHub repos
 
 | Partition | Model | MAE (GBP) | RMSE (GBP) | WAPE (%) | sMAPE (%) | $R^2$ Score | Status |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Validation** | **Random Forest** | **Â£11,767.14** | **Â£17,512.14** | **36.52%** | **55.69%** | **0.3467** | **Best Selected Architecture** |
-| Validation | Gradient Boosting | Â£13,443.90 | Â£19,526.83 | 41.72% | 69.42% | 0.1878 | Competitive ML Alternative |
-| Validation | Seasonal Naive ($t-7$) | Â£15,028.01 | Â£21,135.68 | 46.64% | 43.67% | 0.0484 | Strong Weekly Heuristic |
-| Validation | Moving Average (7d) | Â£16,628.73 | Â£22,031.92 | 51.61% | 64.30% | -0.0340 | Baseline Heuristic |
-| Validation | Ridge Regression | Â£17,276.10 | Â£22,911.70 | 53.62% | 87.24% | -0.1182 | Linear Regularized Baseline |
-| Validation | Persistence Naive ($t-1$) | Â£21,562.17 | Â£26,884.67 | 66.92% | 97.00% | -0.5397 | Simplest Naive Baseline |
-| **Test** | **Random Forest (Updated)**| **Â£10,987.70** | **Â£15,915.69** | **24.36%** | **51.82%** | **0.5611** | **Best Production Out-of-Sample** |
-| Test | Seasonal Naive ($t-7$) | Â£11,685.71 | Â£16,667.57 | 25.90% | 23.64% | 0.5186 | Out-of-sample Baseline |
+| **Validation** | **Random Forest** | **£11,767.14** | **£17,512.14** | **36.52%** | **55.69%** | **0.3467** | **Best Selected Architecture** |
+| Validation | Gradient Boosting | £13,443.90 | £19,526.83 | 41.72% | 69.42% | 0.1878 | Competitive ML Alternative |
+| Validation | Seasonal Naive ($t-7$) | £15,028.01 | £21,135.68 | 46.64% | 43.67% | 0.0484 | Strong Weekly Heuristic |
+| Validation | Moving Average (7d) | £16,628.73 | £22,031.92 | 51.61% | 64.30% | -0.0340 | Baseline Heuristic |
+| Validation | Ridge Regression | £17,276.10 | £22,911.70 | 53.62% | 87.24% | -0.1182 | Linear Regularized Baseline |
+| Validation | Persistence Naive ($t-1$) | £21,562.17 | £26,884.67 | 66.92% | 97.00% | -0.5397 | Simplest Naive Baseline |
+| **Test** | **Random Forest (Updated)**| **£10,987.70** | **£15,915.69** | **24.36%** | **49.42%** | **0.5611** | **Best Production Out-of-Sample** |
+| Test | Seasonal Naive ($t-7$) | £11,685.71 | £16,667.57 | 25.90% | 23.64% | 0.5186 | Out-of-sample Baseline |
 
 ---
 
@@ -62,13 +62,13 @@ Use this checklist to verify final project completion, prepare your GitHub repos
 - [x] **Clean Git Status:** Raw datasets (`Online Retail.xlsx`, `*.zip`), virtual environments (`.venv`), Python byte-caches (`__pycache__`), and pytest caches (`.pytest_cache`) are strictly excluded via `.gitignore`.
 - [x] **Asset Visibility:** The 7 generated visualization charts in `reports/figures/` and `reports/model_comparison.csv` are tracked, ensuring charts render cleanly in GitHub markdown view.
 - [x] **Modular Structure:** Code is separated into dedicated single-responsibility modules:
-  - `src/data_loader.py` â€” Download, extraction, schema validation.
-  - `src/cleaner.py` â€” Business rules, cancellation logic, daily aggregation.
-  - `src/eda.py` â€” Automated visualization pipeline.
-  - `src/features.py` â€” Time-series lags, shifted rolling aggregates, calendar/holiday features, chronological splits.
-  - `src/models.py` â€” Baseline estimators and machine learning regressors.
-  - `src/evaluate.py` â€” Metrics (MAE, RMSE, WAPE, zero-masked MAPE) and benchmark reporting.
-- [x] **Unit Testing:** 38 unit tests in `tests/` passing in ~5.8s with synthetic data and mocked networking (no internet connection needed for automated CI/CD).
+  - `src/data_loader.py` — Download, extraction, schema validation.
+  - `src/cleaner.py` — Business rules, cancellation logic, daily aggregation.
+  - `src/eda.py` — Automated visualization pipeline.
+  - `src/features.py` — Time-series lags, shifted rolling aggregates, calendar/holiday features, chronological splits.
+  - `src/models.py` — Baseline estimators and machine learning regressors.
+  - `src/evaluate.py` — Metrics (MAE, RMSE, WAPE, zero-masked MAPE) and benchmark reporting.
+- [x] **Unit Testing:** 39 unit tests in `tests/` passing in ~5.8s with synthetic data and mocked networking (no internet connection needed for automated CI/CD).
 - [x] **Jupyter Notebooks:** 3 structured, clean notebooks with clear markdown explanations:
   - `01_exploratory_data_analysis.ipynb`
   - `02_feature_engineering.ipynb`
@@ -81,16 +81,16 @@ Use this checklist to verify final project completion, prepare your GitHub repos
 *(Ready to review and share upon internship completion)*
 
 ```text
-ðŸš€ Excited to share my latest Machine Learning project: Retail Sales & Demand Forecasting Pipeline!
+🚀 Excited to share my latest Machine Learning project: Retail Sales & Demand Forecasting Pipeline!
 
 In retail and e-commerce supply chains, inaccurate demand forecasting leads to costly stockouts or bloated inventory holding costs. Over the past few weeks, I built an end-to-end, reproducible ML time-series forecasting pipeline using transactional retail data (540,000+ records from the UCI Online Retail dataset).
 
 Here are the key technical and business highlights:
-ðŸ“Š Non-Destructive Data Ingestion & Cleaning: Formulated transparent business rules preserving 135,000+ guest checkout records (Â£1.4M in demand) while auditing Â£894k in returns (8.4% return rate) and Saturday operational store closures.
-âš™ï¸ Feature Engineering & Zero-Lookahead Architecture: Constructed 31 temporal features (lags t-1, t-7, t-14, t-28, shifted rolling statistics, cyclical encodings, and UK retail holiday countdowns), strictly shifting rolling windows to eliminate lookahead data leakage.
-ðŸ¤– Baseline Benchmarking & Model Selection: Implemented scikit-learn compatible baselines (Persistence Naive, Seasonal Naive, 7-day Moving Average) and benchmarked against Ridge, Random Forest, and Gradient Boosting on strictly chronological Train/Validation/Test splits.
-ðŸ† Empirical Results: Random Forest emerged as the top architecture on validation data (WAPE: 36.52%), cutting MAE by 45.4% over persistence baselines. When retrained for production on the peak Q4 holiday surge, the model achieved 24.36% WAPE (Â£10,987 MAE, RÂ² = 0.5611).
-ðŸ“¦ Key Supply Chain Insights: Discovered that wholesale pre-holiday ordering accelerates 6â€“8 weeks before Christmas (peaking on November 14th at Â£111.9k), identifying an optimal mid-September inventory procurement ramp.
+📊 Non-Destructive Data Ingestion & Cleaning: Formulated transparent business rules preserving 135,000+ guest checkout records (£1.4M in demand) while auditing £894k in returns (8.4% return rate) and Saturday operational store closures.
+⚙️ Feature Engineering & Zero-Lookahead Architecture: Constructed 31 temporal features (lags t-1, t-7, t-14, t-28, shifted rolling statistics, cyclical encodings, and UK retail holiday countdowns), strictly shifting rolling windows to eliminate lookahead data leakage.
+🤖 Baseline Benchmarking & Model Selection: Implemented scikit-learn compatible baselines (Persistence Naive, Seasonal Naive, 7-day Moving Average) and benchmarked against Ridge, Random Forest, and Gradient Boosting on strictly chronological Train/Validation/Test splits.
+🏆 Empirical Results: Random Forest emerged as the top architecture on validation data (WAPE: 36.52%), cutting MAE by 45.4% over persistence baselines. When retrained for production on the peak Q4 holiday surge, the model achieved 24.36% WAPE (£10,987 MAE, R² = 0.5611).
+📦 Key Supply Chain Insights: Discovered that wholesale pre-holiday ordering accelerates 6–8 weeks before Christmas (peaking on November 14th at £111.9k), identifying an optimal mid-September inventory procurement ramp.
 
 Stack: Python | pandas | NumPy | scikit-learn | matplotlib | seaborn | pytest | Jupyter Notebooks
 

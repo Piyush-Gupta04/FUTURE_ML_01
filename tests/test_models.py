@@ -27,6 +27,7 @@ from src.models import (
     MovingAverageRegressor,
     PersistenceNaiveRegressor,
     SeasonalNaiveRegressor,
+    generate_predictions,
     get_default_models,
     get_feature_columns,
     train_models,
@@ -204,3 +205,41 @@ def test_compare_models_structure() -> None:
     # Model A should rank #1 because it has lower WAPE
     assert df_comp.iloc[0]["Model"] == "Model A"
     assert df_comp.iloc[0]["WAPE (%)"] == 0.0
+
+
+def test_champion_retraining_workflow(synthetic_feature_data: tuple[pd.DataFrame, pd.Series]) -> None:
+    """Verify that retraining the validation champion on Train+Val generates valid test predictions."""
+    X, y = synthetic_feature_data
+    n_train = 30
+    n_val = 10
+    n_test = 10
+
+    X_train, y_train = X.iloc[:n_train], y.iloc[:n_train]
+    X_val, y_val = X.iloc[n_train:n_train + n_val], y.iloc[n_train:n_train + n_val]
+    X_test, y_test = X.iloc[n_train + n_val:], y.iloc[n_train + n_val:]
+
+    # 1. Fit models on train partition only
+    fitted_models = train_models(X_train, y_train, random_state=42)
+
+    # 2. Model selection on validation partition
+    val_preds = generate_predictions(fitted_models, X_val)
+    val_comp = compare_models(y_val, val_preds)
+    champion_name = val_comp.iloc[0]["Model"]
+
+    # 3. Retrain champion on Train + Val
+    X_train_val = pd.concat([X_train, X_val])
+    y_train_val = pd.concat([y_train, y_val])
+
+    models_dict = get_default_models(random_state=42)
+    champion_estimator = models_dict[champion_name]
+    champion_estimator.fit(X_train_val, y_train_val)
+
+    test_preds = champion_estimator.predict(X_test)
+    assert len(test_preds) == len(X_test)
+    assert not np.isnan(test_preds).any()
+
+    # Evaluation on test partition
+    test_metrics = evaluate_predictions(y_test, test_preds, model_name=f"{champion_name} (Updated)")
+    assert test_metrics["Model"] == f"{champion_name} (Updated)"
+    assert test_metrics["WAPE (%)"] >= 0.0
+
