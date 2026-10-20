@@ -248,7 +248,7 @@ All **38 tests pass with 100% success rate** covering:
 
 ## 📑 Final Project Deliverables
 
-- **Executive Report:** [`reports/final_project_report.md`](file:///c:/Users/piyus/OneDrive/Desktop/code/intership%20project/FUTURE_ML_01/reports/final_project_report.md)
-- **Submission Checklist & LinkedIn Draft:** [`reports/submission_checklist.md`](file:///c:/Users/piyus/OneDrive/Desktop/code/intership%20project/FUTURE_ML_01/reports/submission_checklist.md)
-- **Benchmark Metrics Table:** [`reports/model_comparison.csv`](file:///c:/Users/piyus/OneDrive/Desktop/code/intership%20project/FUTURE_ML_01/reports/model_comparison.csv)
-- **Forecast vs. Actual Visualization:** [`reports/figures/07_forecast_vs_actual.png`](file:///c:/Users/piyus/OneDrive/Desktop/code/intership%20project/FUTURE_ML_01/reports/figures/07_forecast_vs_actual.png)
+- **Executive Report:** [Final Project Report](reports/final_project_report.md)
+- **Submission Checklist:** [Submission Checklist](reports/submission_checklist.md)
+- **Benchmark Metrics:** [Model Comparison](reports/model_comparison.csv)
+- **Forecast Visualization:** [Forecast vs. Actual](reports/figures/07_forecast_vs_actual.png)
