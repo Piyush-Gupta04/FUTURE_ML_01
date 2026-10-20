@@ -1,0 +1,13 @@
+Model,MAE (GBP),RMSE (GBP),WAPE (%),MAPE (%) [Zero-Masked],sMAPE (%),R2 Score,Zero-Days Excluded,Partition
+Random Forest,11767.14,17512.14,36.52,32.68,55.69,0.3467,8,Validation
+Gradient Boosting,13443.9,19526.83,41.72,35.39,69.42,0.1878,8,Validation
+Seasonal Naive (t-7),15028.01,21135.68,46.64,49.6,43.67,0.0484,8,Validation
+Moving Average (7d),16628.73,22031.92,51.61,41.81,64.3,-0.034,8,Validation
+Ridge Regression,17276.1,22911.7,53.62,48.35,87.24,-0.1182,8,Validation
+Persistence Naive (t-1),21562.17,26884.67,66.92,56.12,97.0,-0.5397,8,Validation
+Seasonal Naive (t-7),11685.71,16667.57,25.9,27.96,23.64,0.5186,7,Test
+Moving Average (7d),19007.16,24182.5,42.13,33.01,54.07,-0.0133,7,Test
+Random Forest,19128.2,24400.24,42.4,39.6,71.46,-0.0316,7,Test
+Persistence Naive (t-1),22956.52,29731.52,50.89,41.15,76.16,-0.5316,7,Test
+Gradient Boosting,26547.54,31922.25,58.85,54.47,94.98,-0.7656,7,Test
+Ridge Regression,37638.46,41401.56,83.44,78.6,135.64,-1.97,7,Test

@@ -218,3 +218,42 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ==============================================================================
+# Project-Specific Ignores: Sales & Demand Forecasting (FUTURE_ML_01)
+# ==============================================================================
+
+# Data directories (never commit raw/processed datasets)
+data/raw/*
+!data/raw/README.md
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/README.md
+!data/processed/.gitkeep
+
+# Data file formats
+*.zip
+*.tar.gz
+*.xlsx
+*.xls
+*.csv
+*.parquet
+*.feather
+
+# Jupyter Notebook checkpoints & autosave
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Generated reports & outputs
+reports/figures/*
+!reports/figures/.gitkeep
+!reports/figures/*.png
+!reports/model_comparison.csv
+reports/*.html
+reports/*.pdf
+
+# Local environment & secrets
+.env
+.env.*
+!.env.example
